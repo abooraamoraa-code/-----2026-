@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أبو العز العمري | للبرمجة وتطوير الألعاب</title>
+<style>
+:root {
+    --bg-deep: #030307;
+    --bg-card: #0a0b12;
+    --border-glow: rgba(0, 132, 255, 0.2);
+    --accent-blue: #0084ff;
+    --accent-purple: #a855f7;
+    --accent-cyan: #06b6d4;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+/* تأثيرات الخلفية المستقبلية */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 10%, rgba(0, 132, 255, 0.07) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+    z-index: -1;
+}
+
+header {
+    background: rgba(3, 3, 7, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo { font-size: 22px; font-weight: 900; background: linear-gradient(135deg, #fff, var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.5px; }
+
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+
+.contact-btn {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 20px rgba(0, 132, 255, 0.3);
+}
+.contact-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.contact-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 132, 255, 0.6); }
+
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.hero h1 { font-size: 50px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; background: linear-gradient(135deg, #fff, var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 35px; line-height: 1.7; }
+
+.section-title { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 15px; color: #fff; }
+.section-subtitle { font-size: 15px; color: var(--text-muted); text-align: center; margin-bottom: 50px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+/* شبكة الخدمات */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+.service-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(0, 132, 255, 0.1);
+}
+.service-icon { font-size: 36px; margin-bottom: 20px; display: inline-block; }
+.service-title { font-size: 20px; font-weight: bold; margin-bottom: 12px; color: #fff; }
+.service-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* معرض الأعمال */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+.portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.portfolio-img-box {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #0a0b12, #1a1c2e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.portfolio-body { padding: 25px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+.portfolio-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #fff; }
+.portfolio-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+
+footer {
+    background: #020204;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">ABULIZ AL-OMARI</div>
+    <div class="nav-links">
+        <a href="#services">الخدمات</a>
+        <a href="#portfolio">أعمالنا</a>
+        <a href="https://m.me/61550351005838" target="_blank" class="contact-btn">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.91 1.455 5.494 3.737 7.152V22l3.414-1.874c.904.252 1.868.384 2.849.384 5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2zm1.05 12.315l-2.525-2.69-4.92 2.69 5.407-5.74 2.525 2.69 4.92-2.69-5.407 5.74z"/>
+            </svg>
+            تواصل مع الشركة
+        </a>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>نبني مستقبل البرمجيات وعوالم الألعاب الرقمية</h1>
+    <p>نحن شركة أبو العز العمري، نقدم حلولاً برمجية متطورة، تطوير مواقع احترافية، وابتكار ألعاب مذهلة تلبي تطلعات السوق العالمي والمحلي.</p>
+    <a href="https://m.me/61550351005838" target="_blank" class="contact-btn" style="display: inline-flex; margin: 0 auto; padding: 12px 25px; font-size: 15px;">ابدأ مشروعك معنا الآن</a>
+</div>
+
+<div class="container" id="services">
+    <h2 class="section-title">خدماتنا الاحترافية</h2>
+    <p class="section-subtitle">نبتكر بأحدث التقنيات لتقديم أعلى معايير الجودة</p>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <div class="service-title">تطوير المواقع ومنصات الويب</div>
+            <div class="service-desc">برمجة وتطوير مواقع إلكترونية تفاعلية، متاجر رقمية سريعة، وأنظمة ويب مخصصة بأحدث التقنيات البرمجية لتناسب أعمالك.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🎮</div>
+            <div class="service-title">تطوير وتصميم الألعاب</div>
+            <div class="service-desc">نصنع عوالم تفاعلية وألعاب ممتعة للكمبيوتر والهواتف الذكية مع تجربة لعب سلسة ورسومات جذابة باستخدام أقوى محركات الألعاب.</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <div class="service-title">الحلول السحابية والأنظمة</div>
+            <div class="service-desc">ربط الأنظمة بقواعد بيانات سحابية متقدمة، توفير حماية عالية، وتأمين استقرار المشاريع التقنية بكفاءة مطلقة.</div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="portfolio">
+    <h2 class="section-title">معرض أعمال الشركة</h2>
+    <p class="section-subtitle">نماذج من المشاريع التقنية التي قחנו بتطويرها</p>
+    
+    <div class="portfolio-grid">
+        <div class="portfolio-card">
+            <div class="portfolio-img-box">Maha Zone</div>
+            <div class="portfolio-body">
+                <div>
+                    <div class="portfolio-title">متجر مها زون الرقمي</div>
+                    <div class="portfolio-desc">نظام متجر إلكتروني متكامل مرتبط بلوحة تحكم سحابية وعرض منتجات ديناميكي، تم تطويره بالكامل بواسطة شركة أبو العز العمري.</div>
+                </div>
+                <a href="https://m.me/61550351005838" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 13px; font-weight: bold;">اطلب نظاماً مشابهاً ←</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    جميع الحقوق محفوظة © 2026 - شركة أبو العز العمري للبرمجة وتطوير الألعاب
+</footer>
+
+</body>
+</html>
